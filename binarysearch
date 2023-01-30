@@ -1,0 +1,40 @@
+Module Module1
+    Dim carddata() = {11, 12, 25, 33, 52, 56, 57, 59, 85, 91}
+    Sub main()
+        Dim valtosrch As Integer
+        Console.Write("Enter value to search : ")
+        valtosrch = Console.ReadLine()
+        BinarySearch(valtosrch)
+        Console.ReadKey()
+    End Sub
+    Sub BinarySearch(ByVal SearchValue As Integer)
+        Dim Midpoint As Integer
+        Dim First As Integer
+        Dim Found As Boolean
+        Dim Last As Integer
+        Dim curpos As Integer
+        First = 1
+        Last = 9
+        Found = False
+
+        While (First <= Last) And Not (Found)
+            Midpoint = (Last + First) / 2
+            If (CardData(Midpoint) = SearchValue) Then
+                Found = True
+                curpos = Midpoint
+            Else
+                If SearchValue < CardData(Midpoint) Then
+                    Last = Midpoint + 1
+
+                Else
+                    First = Midpoint - 1
+
+                End If
+
+            End If
+
+        End While
+        Console.WriteLine(SearchValue & " is at location " & curpos)
+    End Sub
+
+End Module
